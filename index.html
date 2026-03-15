@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Thamer Alonazi | Operations Specialist & AI Enthusiast</title>
+
+    <base href="/thamerpage/">
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Original style.css (for navbar dark mode toggle etc) -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        /* ─── ROOT VARIABLES ─────────────────────────── */
+        :root {
+            --g: #00c896;
+            --gd: #00a87e;
+            --bg1: #0b1120;
+            --bg2: #0f1e2e;
+            --bg3: #0a2a1e;
+        }
+
+        /* ─── RESET OVERRIDES ─────────────────────────── */
+        html, body { overflow-x: hidden; }
+
+        body {
+            font-family: 'DM Sans', sans-serif !important;
+            background: #f4f6fb !important;
+            color: #333 !important;
+        }
+
+        /* Force navbar visible — style.css hides it by default */
+        .navbar-light {
+            display: flex !important;
+            background: #fff !important;
+        }
+
+        .navbar-light .navbar-nav .nav-link {
+            color: #343a40 !important;
+            font-weight: 500;
+            padding: 25px 10px;
+        }
+        .navbar-light .navbar-nav .nav-link:hover,
+        .navbar-light .navbar-nav .nav-link.active {
+            color: var(--g) !important;
+        }
+
+        /* ─── HERO ───────────────────────────────────── */
+        #home {
+            min-height: 100vh;
+            padding-top: 76px;
+            background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 55%, var(--bg3) 100%) !important;
+            display: flex !important;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated blobs */
+        #home::before {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: var(--g);
+            filter: blur(90px);
+            opacity: 0.15;
+            top: -150px; left: -150px;
+            animation: b1 9s ease-in-out infinite alternate;
+        }
+        #home::after {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            border-radius: 50%;
+            background: #3a7bd5;
+            filter: blur(90px);
+            opacity: 0.13;
+            bottom: -120px; right: -120px;
+            animation: b2 11s ease-in-out infinite alternate;
+        }
+        @keyframes b1 { to { transform: translate(70px, 90px) scale(1.2); } }
+        @keyframes b2 { to { transform: translate(-70px, -60px) scale(1.15); } }
+
+        /* Avatar ring */
+        .av-wrap {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 28px;
+        }
+        .av-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: conic-gradient(var(--g), #3a7bd5, var(--g));
+            animation: spin 7s linear infinite;
+            z-index: 0;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .av-wrap img {
+            position: relative; z-index: 1;
+            width: 175px; height: 175px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--bg1);
+            display: block;
+        }
+
+        /* Hero text */
+        .h-eyebrow {
+            display: block;
+            font-size: .8rem;
+            font-weight: 500;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: 10px;
+            animation: fu .7s ease both;
+        }
+        .h-name {
+            font-family: 'Syne', sans-serif !important;
+            font-size: clamp(2.2rem, 6vw, 4.4rem) !important;
+            font-weight: 800 !important;
+            color: #fff !important;
+            letter-spacing: -1px;
+            line-height: 1.05;
+            margin-bottom: 12px;
+            animation: fu .8s .1s ease both;
+        }
+        .h-name .hl { color: var(--g); }
+        .typed-text-output {
+            font-family: 'DM Sans', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 300 !important;
+            color: rgba(255,255,255,.7) !important;
+        }
+        @keyframes fu {
+            from { opacity: 0; transform: translateY(22px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Stats */
+        .stats-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 32px auto 0;
+            max-width: 540px;
+            animation: fu .8s .35s ease both;
+        }
+        .sc {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 14px;
+            padding: 14px 22px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            min-width: 105px;
+            transition: .3s;
+        }
+        .sc:hover { transform: translateY(-5px); border-color: var(--g); }
+        .sc-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--g);
+            line-height: 1;
+        }
+        .sc-lbl {
+            font-size: .68rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.65);
+            margin-top: 4px;
+        }
+
+        /* Play button */
+        .play-wrap { display: flex; justify-content: center; padding-top: 40px; margin-bottom: 28px; }
+        .btn-play {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 64px !important; height: 64px !important;
+            border-radius: 50% !important;
+            background: rgba(255,255,255,.15) !important;
+            border: 2px solid rgba(255,255,255,.4) !important;
+            cursor: pointer;
+            padding: 0 !important;
+            transition: .3s;
+        }
+        .btn-play::before { display: none !important; }
+        .btn-play::after {
+            content: '' !important;
+            position: absolute !important;
+            width: 0 !important; height: 0 !important;
+            border-style: solid !important;
+            border-width: 11px 0 11px 19px !important;
+            border-color: transparent transparent transparent #fff !important;
+            background: none !important;
+            border-radius: 0 !important;
+            top: 50% !important; left: 54% !important;
+            transform: translate(-50%,-50%) !important;
+            animation: none !important;
+        }
+        .btn-play:hover { background: var(--g) !important; border-color: var(--g) !important; transform: scale(1.1); }
+        .btn-play span {
+            position: absolute !important;
+            inset: -10px !important;
+            border-radius: 50% !important;
+            border: 2px solid rgba(255,255,255,.25) !important;
+            display: block !important;
+            width: auto !important; height: auto !important;
+            left: auto !important;
+            background: none !important;
+            animation: pulse 2s ease-out infinite !important;
+        }
+        @keyframes pulse {
+            0%   { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.55); opacity: 0; }
+        }
+
+        /* Nav icon buttons */
+        .icon-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 580px;
+            margin: 0 auto;
+            animation: fu .8s .5s ease both;
+        }
+        .ib {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 18px;
+            border-radius: 14px;
+            background: rgba(255,255,255,.06);
+            color: #fff !important;
+            text-decoration: none !important;
+            border: 1px solid rgba(255,255,255,.12);
+            min-width: 85px;
+            margin: 7px;
+            transition: .35s cubic-bezier(.175,.885,.32,1.275);
+            backdrop-filter: blur(8px);
+        }
+        .ib:hover {
+            background: var(--g) !important;
+            color: #fff !important;
+            border-color: transparent;
+            transform: translateY(-7px) scale(1.05);
+            box-shadow: 0 12px 26px rgba(0,200,150,.28);
+            text-decoration: none !important;
+        }
+        .ib i { font-size: 1.55rem; margin-bottom: 7px; }
+        .ib span {
+            font-size: .75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ─── WHAT I DO ──────────────────────────────── */
+        .wid-section { background: #f4f6fb; padding: 80px 0; }
+        .sec-label {
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--g);
+            margin-bottom: 8px;
+        }
+        .sec-title {
+            font-family: 'Syne', sans-serif !important;
+            font-size: clamp(1.7rem, 4vw, 2.6rem) !important;
+            font-weight: 800 !important;
+            color: #111 !important;
+            letter-spacing: -.5px;
+        }
+        .svc {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px 26px;
+            border: 1px solid #eaeaea;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: .35s ease;
+        }
+        .svc::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 0;
+            background: var(--g);
+            transition: height .4s ease;
+        }
+        .svc:hover { transform: translateY(-8px); box-shadow: 0 18px 40px rgba(0,0,0,.08); border-color: transparent; }
+        .svc:hover::before { height: 100%; }
+        .svc-icon {
+            width: 54px; height: 54px;
+            background: linear-gradient(135deg,#e8faf5,#d0f5ea);
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 18px;
+        }
+        .svc-icon i { font-size: 1.4rem; color: var(--gd); }
+        .svc h5 {
+            font-family: 'Syne', sans-serif !important;
+            font-weight: 700 !important;
+            font-size: 1rem !important;
+            color: #111 !important;
+            margin-bottom: 9px !important;
+        }
+        .svc p { font-size: .88rem; color: #666; line-height: 1.7; margin: 0; }
+
+        /* ─── FOOTER ─────────────────────────────────── */
+        .ft {
+            background: var(--bg1);
+            padding: 60px 20px 30px;
+        }
+        .ft-brand {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 6px;
+        }
+        .ft-brand span { color: var(--g); }
+        .ft-tag { font-size: .86rem; color: rgba(255,255,255,.6); margin-bottom: 22px; }
+        .soc {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 50%;
+            color: #fff !important;
+            font-size: .95rem;
+            text-decoration: none !important;
+            margin: 4px;
+            transition: .3s;
+        }
+        .soc:hover {
+            background: var(--g) !important;
+            border-color: transparent;
+            color: #fff !important;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 18px rgba(0,200,150,.3);
+        }
+        .ft-copy {
+            font-size: .8rem;
+            color: rgba(255,255,255,.28);
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,.07);
+            padding-top: 22px;
+        }
+
+        /* ─── BACK TO TOP ─────────────────────────────── */
+        .back-to-top {
+            position: fixed !important;
+            display: none;
+            width: 38px;
+            text-align: center;
+            right: 30px; bottom: 30px;
+            z-index: 99;
+            border-radius: 50% !important;
+            background: var(--g) !important;
+            color: #fff !important;
+            border-color: var(--g) !important;
+            padding: 6px 0 !important;
+        }
+
+        /* ─── RESPONSIVE ─────────────────────────────── */
+        @media (max-width: 576px) {
+            .ib { min-width: 70px; padding: 11px 13px; margin: 5px; }
+            .ib i { font-size: 1.25rem; }
+            .ib span { font-size: .62rem; }
+            .sc { min-width: 85px; padding: 11px 14px; }
+            .sc-num { font-size: 1.45rem; }
+        }
+    </style>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="51" class="light-mode">
+
+    <!-- ── NAVBAR ─────────────────────────────────────── -->
+    <nav class="navbar fixed-top shadow-sm navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-lg-5">
+        <a href="index.html" class="navbar-brand ml-lg-3">
+            <h1 class="m-0 display-5"><span class="text-primary">Thamer</span>Alonazi</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse px-lg-3" id="navbarCollapse">
+            <div class="navbar-nav m-auto py-0">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <a href="blog.html" class="nav-item nav-link">Blog</a>
+                <a href="projects.html" class="nav-item nav-link">Projects</a>
+                <a href="ai-tools.html" class="nav-item nav-link">AI Tools</a>
+            </div>
+            <a href="https://www.linkedin.com/in/thamer-alonazi/" target="_blank" class="btn btn-outline-primary d-none d-lg-block mr-2">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="mailto:tha.alonazi@gmail.com" class="btn btn-outline-primary d-none d-lg-block">Hire Me</a>
+            <button id="dark-mode-toggle" class="btn btn-outline-primary ml-2">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ── VIDEO MODAL ────────────────────────────────── -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <button type="button" class="close p-3 position-absolute" data-dismiss="modal" aria-label="Close" style="z-index:1;right:0;color:white;">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/eGIiX5hwHow" id="video" allowscriptaccess="always" allow="autoplay"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── HERO ───────────────────────────────────────── -->
+    <div class="container-fluid" id="home">
+        <div class="container position-relative py-5" style="z-index:1;">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+
+                    <div class="av-wrap d-inline-block">
+                        <img src="img/MyFace2.jpg" alt="Thamer Alonazi">
+                    </div>
+
+                    <span class="h-eyebrow">Operations · AI · Digital Transformation</span>
+                    <h1 class="h-name">Thamer <span class="hl">Alonazi</span></h1>
+                    <h2 class="typed-text-output d-inline" style="font-size:1.05rem;font-weight:300;"></h2>
+                    <div class="typed-text d-none">Operations Specialist, AI &amp; Digital Transformation Enthusiast</div>
+
+                    <div class="stats-row">
+                        <div class="sc"><div class="sc-num">12+</div><div class="sc-lbl">Years Exp.</div></div>
+                        <div class="sc"><div class="sc-num">50+</div><div class="sc-lbl">Projects</div></div>
+                        <div class="sc"><div class="sc-num">100%</div><div class="sc-lbl">Safety Rate</div></div>
+                        <div class="sc"><div class="sc-num">AI</div><div class="sc-lbl">Driven</div></div>
+                    </div>
+
+                    <div class="play-wrap">
+                        <button type="button" class="btn-play" data-toggle="modal"
+                            data-src="https://www.youtube.com/embed/eGIiX5hwHow" data-target="#videoModal">
+                            <span></span>
+                        </button>
+                    </div>
+
+                    <div class="icon-row">
+                        <a href="about.html" class="ib"><i class="fas fa-user"></i><span>About</span></a>
+                        <a href="blog.html" class="ib"><i class="fas fa-blog"></i><span>Blog</span></a>
+                        <a href="projects.html" class="ib"><i class="fas fa-project-diagram"></i><span>Projects</span></a>
+                        <a href="ai-tools.html" class="ib"><i class="fas fa-robot"></i><span>AI Tools</span></a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── WHAT I DO ──────────────────────────────────── -->
+    <section class="wid-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <p class="sec-label">My Expertise</p>
+                <h2 class="sec-title">What I Do</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="svc">
+                        <div class="svc-icon"><i class="fas fa-cogs"></i></div>
+                        <h5>Process Improvement</h5>
+                        <p>Analyzing existing procedures to identify weaknesses and propose practical, implementable solutions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="svc">
+                        <div class="svc-icon"><i class="fas fa-chart-bar"></i></div>
+                        <h5>Data Analysis</h5>
+                        <p>Building reports and dashboards that support accurate, data-driven management decisions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="svc">
+                        <div class="svc-icon"><i class="fas fa-robot"></i></div>
+                        <h5>Task Automation</h5>
+                        <p>Transforming manual workflows into automated systems using Google Apps Script and AI.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4">
+                    <div class="svc">
+                        <div class="svc-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <h5>Shift Optimization</h5>
+                        <p>Designing efficient shift schedules that balance productivity and workforce well-being.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ─────────────────────────────────────── -->
+    <footer class="ft">
+        <div class="container text-center">
+            <div class="ft-brand"><span>Thamer</span>Alonazi</div>
+            <p class="ft-tag">Operations Specialist · AI &amp; Digital Transformation Enthusiast</p>
+            <div>
+                <a class="soc" href="https://github.com/thameralonazi" target="_blank"><i class="fab fa-github"></i></a>
+                <a class="soc" href="https://twitter.com/abo0osarh" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a class="soc" href="https://t.me/thameralonazi" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a class="soc" href="https://www.youtube.com/user/abosarhthamer" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a class="soc" href="https://api.whatsapp.com/send?phone=00966557973470" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a class="soc" href="https://www.snapchat.com/add/thameralonazi" target="_blank"><i class="fab fa-snapchat-ghost"></i></a>
+                <a class="soc" href="https://www.facebook.com/abo0osarh" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a class="soc" href="http://linkedin.com/in/thameralonazi" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a class="soc" href="https://www.instagram.com/thameralonazi/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="ft-copy">&copy; 2025 <strong style="color:#fff;">Thamer Alonazi</strong>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="btn back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/typed/typed.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // Show navbar immediately — override style.css hiding it
+        document.addEventListener('DOMContentLoaded', function() {
+            var nb = document.querySelector('.navbar-light');
+            if (nb) nb.style.setProperty('display', 'flex', 'important');
+        });
+
+        // Back to top
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) $('.back-to-top').fadeIn('slow');
+            else $('.back-to-top').fadeOut('slow');
+        });
+        $('.back-to-top').click(function() {
+            $('html, body').animate({scrollTop: 0}, 1500);
+            return false;
+        });
+    </script>
+</body>
+</html>
